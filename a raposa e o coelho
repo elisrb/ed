@@ -1,0 +1,28 @@
+import math
+
+total_buracos = int(input())
+coelho = input().split()
+raposa = input().split()
+buracos = []
+i = 0
+while i < total_buracos:
+    buracos.append(input().split())
+    i+=1
+escapes = []
+for buraco in buracos:
+    x = float(buraco[0])
+    y = float(buraco[1])
+    x_coelho = (float(coelho[0]) - x)**2
+    y_coelho = (float(coelho[1]) - y)**2
+    x_raposa = (float(raposa[0]) - x)**2
+    y_raposa = (float(raposa[1]) - y)**2
+
+    dist_coelho = math.sqrt(x_coelho + y_coelho)
+    dist_raposa = math.sqrt(x_raposa + y_raposa)
+
+    if 2*dist_coelho <= dist_raposa:
+        escapes.append(f'({x:.3f}, {y:.3f})')
+if len(escapes) == 0:
+    print('O coelho nao pode escapar.')
+else:
+    print(f'O coelho pode escapar pelo buraco {escapes[0]}.')

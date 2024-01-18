@@ -1,0 +1,6 @@
+palavra = '12345'
+caractere = '4'
+i = 1
+i2 = palavra.find(caractere, i+2)
+fatia = palavra[i:i2+1]
+print(fatia)

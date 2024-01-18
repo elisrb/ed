@@ -1,0 +1,71 @@
+#implementação de uma pilha
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item): #adicionar um elemento
+        self.items.insert(0, item)
+    
+    def pop(self): #desempilhar
+        if self.is_empty() == False:
+            return self.items.pop(0)
+
+    def __str__(self): #para printar
+        return (f"{self.items}")
+    
+    def size(self): #len
+        return len(self.items)
+    
+    def is_empty(self): #true se é vazio
+        return self.size() == 0
+    
+    def peek(self): #retorna item no topo da pilha
+        return self.items[0]
+
+#testes
+pilha = Stack()
+
+for i in range(10):
+    pilha.push(i)
+    print(pilha)
+
+print(pilha.size())
+print(pilha.is_empty())
+print(pilha.peek())
+
+for i in range(11):
+    print(pilha.pop())
+
+print(pilha.is_empty())
+
+#conversão decimal-binário
+def binario(decimal):
+    remstack = Stack()
+    while decimal > 0:
+        rem = decimal%2
+        remstack.push(rem)
+        decimal = decimal//2
+    
+    binario = ""
+    while not remstack.is_empty():
+        binario += f"{remstack.pop()}"
+
+    return binario
+
+print(binario(42))
+
+#conversão para qualquer base
+def base(decimal, base):
+    remstack = Stack()
+    while decimal > 0:
+        rem = decimal%base
+        remstack.push(rem)
+        decimal = decimal//base
+    
+    numero = ""
+    while not remstack.is_empty():
+        numero += f"{remstack.pop()}"
+
+    return numero
+
+print(base(16, 16))

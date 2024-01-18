@@ -1,0 +1,17 @@
+def descarta(cartas, pontos):
+    cartas_ordenadas = sorted(cartas)
+    cartas.pop()
+    return cartas, pontos
+
+total = int(input())
+cartas = [int(x) for x in input().split()]
+
+pontos = 0
+rodadas = total//2
+
+while len(cartas) > 0:
+    carta = max(cartas[0], cartas[-1])
+    pontos += carta
+    cartas.pop(cartas.index(carta))
+    descarta(cartas, pontos)
+    rodadas -= 1

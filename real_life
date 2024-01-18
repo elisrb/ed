@@ -1,0 +1,12 @@
+def exibe_candidatos(deque, pos, ordem):
+    if deque.size() >= pos:
+        if ordem == 'direta':
+            for i in range(pos):
+                deque.remove_front()
+            while not deque.is_empty():
+                print(deque.remove_front())
+        elif ordem == 'inversa':
+            for i in range(deque.size() - pos):
+                deque.remove_rear()
+            while not deque.is_empty():
+                print(deque.remove_rear())

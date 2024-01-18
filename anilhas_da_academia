@@ -1,0 +1,40 @@
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item): #adicionar um elemento
+        self.items.append(item)
+    
+    def pop(self): #desempilhar
+        if self.isEmpty() == False:
+            return self.items.pop()
+        
+    def size(self): #len
+        return len(self.items)
+    
+    def isEmpty(self): #true se é vazio
+        return self.size() == 0
+
+anilhas = Stack()
+n = int(input())
+while n != 0:
+    anilhas.push(n)
+    n = int(input())
+
+peso = int(input())
+peso_total = 0
+anilhas_total = 0
+
+peso_atual = anilhas.pop()
+while peso_atual != peso:
+    print(f'Peso retirado: {peso_atual}')
+    peso_total+=peso_atual
+    anilhas_total+=1
+    peso_atual = anilhas.pop()
+
+print(f'Peso retirado: {peso}')
+peso_total+=peso
+anilhas_total+=1
+
+print(f'Anilhas retiradas: {anilhas_total}')
+print(f'Peso total movimentado: {peso_total}')

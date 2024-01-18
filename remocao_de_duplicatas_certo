@@ -1,0 +1,26 @@
+def analise(frase, abriu, fechou):
+    abre = []
+    current = ''
+    i = 0
+    global duplicata
+    while i < len(frase):
+        if frase[i] == abriu:
+            abre.append(i)
+        elif frase[i] == fechou:
+            previous = current
+            current = frase[abre[-1]+1:i]
+            abre.pop()
+            if current == abriu + previous + fechou:
+                duplicata = True
+        i+=1
+
+for rep in range(int(input())):
+    frase = input()
+    duplicata = False
+    analise(frase, '(', ')')
+    analise(frase, '[', ']')
+    analise(frase, '{', '}')
+    if duplicata:
+        print('A expressão possui duplicata.')
+    else:
+        print('A expressão não possui duplicata.')

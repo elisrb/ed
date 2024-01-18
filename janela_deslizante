@@ -1,0 +1,10 @@
+total = int(input())
+lista = [int(x) for x in input().split()]
+tamanho = int(input())
+i = 0
+saidas = []
+while i <= total-tamanho:
+    saidas.append(max(lista[i:i+tamanho]))
+    i+=1
+for item in saidas:
+    print(item, end='  ')

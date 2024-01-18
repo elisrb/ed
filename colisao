@@ -1,0 +1,24 @@
+divisor, total = [int(x) for x in input().split()]
+if total == 0:
+    print("0 - [x]")
+else:
+    chaves = [int(x) for x in input().split()]
+    tabela = []
+    for i in range(divisor):
+        tabela.append([])
+    for chave in chaves:
+        tabela[chave%divisor].append(chave)
+    for indice in range(divisor):
+        print(f"{indice} - ", end='')
+        t = len(tabela[indice])
+        if t == 0:
+            print("[x]")
+        else:
+            if t == 1:
+                print(tabela[indice][0])
+            else:
+                print(tabela[indice][0], end='')
+                if len(tabela[indice]) > 2:
+                    for elemento in tabela[indice][1:-1]:
+                        print(f" -> {elemento}", end='')
+                print(f" -> {tabela[indice][-1]}")

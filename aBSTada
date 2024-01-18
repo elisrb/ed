@@ -1,0 +1,72 @@
+class Node:
+    def __init__(self, value):
+        self.data = value
+        self.esq = None
+        self.dir = None
+
+    def set_esq(self, value):
+        self.esq = Node(value)
+
+    def set_dir(self, value):
+        self.dir = Node(value)
+
+    def get_data(self):
+        return self.data
+    
+    def get_esq(self):
+        return self.esq
+    
+    def get_dir(self):
+        return self.dir
+    
+def insere(node, value):
+    if value < node.get_data():
+        if not node.get_esq():
+            node.set_esq(value)
+        else:
+            insere(node.get_esq(), value)
+    else:
+        if not node.get_dir():
+            node.set_dir(value)
+        else:
+            insere(node.get_dir(), value)
+
+def inorder(raiz):
+    if raiz:
+        inorder(raiz.get_esq())
+        print(raiz.get_data(), end=' ')
+        inorder(raiz.get_dir())
+
+def posorder(raiz):
+    if raiz:
+        posorder(raiz.get_esq())
+        posorder(raiz.get_dir())
+        print(raiz.get_data(), end=' ')
+
+def preorder(raiz):
+    if raiz:
+        print(raiz.get_data(), end=' ')
+        preorder(raiz.get_esq())
+        preorder(raiz.get_dir())
+
+###
+
+raiz = None
+cmd = input()
+
+while cmd != 'quack':
+    if cmd == 'in':
+        inorder(raiz)
+        print('')
+    elif cmd == 'pre':
+        preorder(raiz)
+        print('')
+    elif cmd == 'pos':
+        posorder(raiz)
+        print('')
+    else:
+        if raiz:
+            insere(raiz, int(cmd))
+        else:
+            raiz = Node(int(cmd))
+    cmd = input()

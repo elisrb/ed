@@ -1,0 +1,29 @@
+def quicksort(lista, low, high):
+    if low < high:
+        part = partition(lista, low, high)
+        quicksort(lista, low, part-1)
+        quicksort(lista, part+1, high)
+
+def partition(lista, low, high):
+    pivot = lista[low]
+    left = low+1
+    right = high
+
+    while left < right:
+        while left < len(lista) and lista[left] <= pivot:
+            left+=1
+        while right > 0 and lista[right] >= pivot:
+            right-=1
+        if left < right:
+            temp = lista[left]
+            lista[left] = lista[right]
+            lista[right] = temp
+
+    temp = lista[low]
+    lista[low] = lista[right]
+    lista[right] = temp
+    return right
+
+lista = [54,26,93,17,77,31,44,55,20]
+quicksort(lista, 0, 8)
+print(lista)

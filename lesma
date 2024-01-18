@@ -1,0 +1,17 @@
+total_lesmas = int(input())
+lesmas = []
+i = 0
+while i < total_lesmas:
+    lesmas.append(int(input()))
+    i+=1
+classe1 = [0]
+classe2 = [0]
+classe3 = [0]
+for lesma in lesmas:
+    if lesma < 10:
+        classe1.append(lesma)
+    elif lesma < 20:
+        classe2.append(lesma)
+    else:
+        classe3.append(lesma)
+print(f'{max(classe1)} {(max(classe2))} {max(classe3)}')

@@ -1,0 +1,20 @@
+class ArvoreBinaria():
+    def __init__(self, dado, esq = None, dir = None):
+        self.dado = dado
+        self.esq = esq
+        self.dir = dir
+
+def constituiArvoreBinariaDeBusca(raiz):
+    if raiz:
+        if raiz.esq and raiz.esq.dado > raiz.dado:
+            return False
+        elif raiz.dir and raiz.dir.dado < raiz.dado:
+            return False
+        elif constituiArvoreBinariaDeBusca(raiz.esq) == False:
+            return False
+        elif constituiArvoreBinariaDeBusca(raiz.dir) == False:
+            return False
+        return True
+
+raiz = ArvoreBinaria(7, ArvoreBinaria(4), ArvoreBinaria(10, ArvoreBinaria(11)))
+print(constituiArvoreBinariaDeBusca(raiz))

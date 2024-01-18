@@ -1,0 +1,12 @@
+total = int(input())
+lista = input().split()
+jogadores = []
+for jogador in lista:
+    jogadores.append(int(jogador))
+jogadores.sort(reverse=True)
+titular = sum(jogadores[:11])
+if len(jogadores) <= 22:
+    reserva = sum(jogadores[11:])
+else:
+    reserva = sum(jogadores[-11:])
+print(titular-reserva)

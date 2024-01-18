@@ -1,0 +1,23 @@
+total = int(input())
+letras = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+i = 0
+while i < total:
+    linha = input()
+    indice = 0
+    string = ''
+    letra = linha[0]
+    numero = ''
+    j = 1
+    while j < len(linha):
+        elemento = linha[j]
+        if elemento in letras:
+            string += letra*int(numero)
+            letra = elemento
+            numero = ''
+        else:
+            numero+=elemento
+            if j+1 == len(linha):
+                string += letra*int(numero)
+        j+=1
+    print(string)
+    i+=1

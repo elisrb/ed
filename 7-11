@@ -1,0 +1,20 @@
+class Node:
+    def __init__(self, valor):
+        self.valor = valor
+        self.filhos = []
+    
+    def set_filho(self, filho):
+        self.filhos.append(Node(filho))
+
+    def get_filhos(self):
+        return self.filhos
+    
+class Tree:
+    def __init__(self, raiz):
+        self.raiz = Node(raiz)
+
+    def conta_nos(self, raiz):
+        pass
+
+    def altura(self):
+        pass

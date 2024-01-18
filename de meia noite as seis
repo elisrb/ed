@@ -1,0 +1,22 @@
+testes = int(input())
+for i in range(testes):
+    planejamento = input()
+    youdied = False
+    for j in range(3):
+        for caractere in input():
+            if caractere in planejamento:
+                planejamento = planejamento.replace(caractere, '', 1)
+            else:
+                youdied = True
+    if youdied:
+        print("You died!")
+    elif planejamento == '':
+        print("It's in the box!")
+    else:
+        conteudo = ''
+        for letra in sorted(planejamento):
+            if letra not in conteudo:
+                conteudo += letra
+        print(f"Bora ralar: {conteudo}")
+
+    

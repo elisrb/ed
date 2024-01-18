@@ -1,0 +1,13 @@
+pretendentes = int(input())
+candidatos = []
+for i in range(pretendentes):
+    nome, sobrenome, altura, peso = input().split()
+    candidatos.append([abs(180 - int(altura))])
+    if int(peso) <= 75:
+        candidatos[i].append(75 - int(peso))
+    else:
+        candidatos[i].append(75 + int(peso))
+    candidatos[i].append(f"{sobrenome}, {nome}")
+candidatos.sort()
+for termo in candidatos:
+    print(termo[2])

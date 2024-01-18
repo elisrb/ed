@@ -1,0 +1,23 @@
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item): #adicionar um elemento
+        self.items.append(item)
+    
+    def pop(self): #desempilhar
+        if self.isEmpty() == False:
+            return self.items.pop()
+        
+    def size(self): #len
+        return len(self.items)
+    
+    def isEmpty(self): #true se é vazio
+        return self.size() == 0
+
+fila = Stack()
+for caractere in input():
+    if caractere == '*':
+        print(fila.pop(), end = '')
+    else:
+        fila.push(caractere)

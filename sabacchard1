@@ -1,0 +1,3 @@
+total = int(input())
+cartas = [int(x) for x in input().split()]
+

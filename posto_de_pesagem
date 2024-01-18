@@ -1,0 +1,21 @@
+veiculos, amostragem, limite = [int(x) for x in input().split()]
+pesos = [int(x) for x in input().split()]
+
+tempo = 0
+i = 0
+continua = True
+while continua:
+    if i % amostragem == 0:
+        if pesos[i] <= limite:
+            tempo+=5
+        else:
+            peso = pesos[i] - 2
+            pesos.append(peso)
+            tempo+=10
+    else:
+        tempo+=1
+    i+=1
+    if i == len(pesos):
+        continua = False
+
+print(tempo)

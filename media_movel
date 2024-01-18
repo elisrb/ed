@@ -1,0 +1,6 @@
+import math
+maximo, termos = [int(x) for x in input().split()]
+valores = [int(x) for x in input().split()]
+for i in range(maximo - termos + 1):
+    media = math.floor((sum(valores[i:i+termos]))/termos)
+    print(media)

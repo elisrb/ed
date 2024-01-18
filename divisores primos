@@ -1,0 +1,15 @@
+def divisores(n):
+    lista_divisores = []
+    for inteiro in range (n):
+        if n%(inteiro+1) == 0:
+            lista_divisores.append(inteiro+1)
+    return lista_divisores
+
+def primos_gemeos(n):
+    result = []
+    i = 0
+    while len(result) < n:
+        if divisores(i) == [1, i] and divisores(i+2) == [1, i+2]:
+            result.append((i, i+2))
+        i+=1
+    return result

@@ -1,0 +1,44 @@
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item): #adicionar um elemento
+        self.items.append(item)
+    
+    def pop(self): #desempilhar
+        if self.isEmpty() == False:
+            return self.items.pop()
+    
+    def size(self): #len
+        return len(self.items)
+    
+    def isEmpty(self): #true se é vazio
+        return self.size() == 0
+    
+    def peek(self): #retorna item no topo da pilha
+        return self.items[-1]
+    
+    def __str__(self): #para printar
+        return (f"{self.items}")
+    
+class Fila_comPilhas:
+    def __init__(self):
+        self.pilha1 = Stack()
+        self.pilha2 = Stack()
+
+    def enqueue(self, item):
+        # adiciona ao final
+        while not self.pilha1.isEmpty():
+            self.pilha2.push(self.pilha1.pop())
+        self.pilha1.push(item)
+        while not self.pilha2.isEmpty():
+            self.pilha1.push(self.pilha2.pop())
+    
+    def dequeue(self):
+        # retorna o item no início
+        return self.pilha1.pop()
+
+    def imprime(self):
+        # imprime itens linha a linha
+        while not self.pilha1.isEmpty():
+            print(self.pilha1.pop())

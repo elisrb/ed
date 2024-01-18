@@ -1,0 +1,18 @@
+def fibonacci(n):
+    if n in cont.keys():
+        cont[n] += 1
+    else:
+        cont[n] = 1
+
+    if n == 1:
+        return 1
+    elif n == 0:
+        return 0
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+n = int(input())
+cont = {0:0}
+print(f'fibonacci({n}) = {fibonacci(n)}.')
+for i in range(n+1):
+    print(f'{cont[i]} chamada(s) a fibonacci({i}).')

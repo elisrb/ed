@@ -1,0 +1,39 @@
+class ArvoreBinaria():
+    def __init__(self, dado, esq = None, dir = None):
+        self.dado = dado
+        self.esq = esq
+        self.dir = dir
+
+def verificaSimetria(raiz):
+    deu = True
+    if raiz.esq and raiz.dir and raiz.esq.dado == raiz.dir.dado:
+        esquerda = raiz.esq
+        direita = raiz.dir
+        while deu:
+            if verificaEsq(esquerda) != verificaDir(direita):
+                deu = False
+            elif verificaEsq(direita) != verificaDir(esquerda):
+                deu = False
+            else:
+                if direita.esq and esquerda.dir:
+                    direita = direita.esq
+                    esquerda = esquerda.dir
+                else:
+                    break
+    elif raiz.esq or raiz.dir:
+        deu = False
+    return deu
+
+def verificaEsq(raiz):
+    filhos = []
+    while raiz and raiz.esq:
+        filhos.append(raiz.esq.dado)
+        raiz = raiz.esq
+    return filhos
+
+def verificaDir(raiz):
+    filhos = []
+    while raiz and raiz.dir:
+        filhos.append(raiz.dir.dado)
+        raiz = raiz.dir
+    return filhos

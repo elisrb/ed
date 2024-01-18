@@ -1,0 +1,19 @@
+end = False
+lista = []
+while not end:
+    inst = input().split()
+    if len(inst)>1:
+        chave = int(inst[1])
+    inst = inst[0]
+    if inst == 'I' and chave >= 0:
+        lista.insert(0, chave)
+    elif inst == 'F' and chave >=0:
+        lista.append(chave)
+    elif inst == 'P':
+        print(lista.pop())
+    elif inst == 'D':
+        print(lista.pop(0))
+    elif inst == 'X':
+        end = True
+        for elemento in lista:
+            print(elemento)

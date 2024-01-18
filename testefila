@@ -1,0 +1,38 @@
+class Queue:
+    def __init__(self):
+        self.items = []
+    
+    def enqueue(self, item):
+        self.items.append(item)
+    
+    def dequeue(self):
+        return self.items.pop(0)
+    
+    def isEmpty(self):
+        return self.size() == 0
+    
+    def size(self):
+        return len(self.items)
+    
+prioridade1 = Queue()
+prioridade2 = Queue()
+normal = Queue()
+for i in range(10):
+    pessoa = int(input())
+    if pessoa >= 80:
+        prioridade1.enqueue(pessoa)
+    elif pessoa >= 60:
+        prioridade2.enqueue(pessoa)
+    else:
+        normal.enqueue(pessoa)
+
+fila = Queue()
+while not prioridade1.isEmpty():
+    fila.enqueue(prioridade1.dequeue())
+while not prioridade2.isEmpty():
+    fila.enqueue(prioridade2.dequeue())
+while not normal.isEmpty():
+    fila.enqueue(normal.dequeue())
+
+for i in range(10):
+    print(fila.dequeue(), end = ' ')

@@ -1,0 +1,24 @@
+tamanho = int(input())
+print(f'Transmitindo {tamanho} bytes...')
+tempo = 0
+while tamanho > 0:
+    i = 0
+    transferencia = 0
+    while i < 5:
+        bytes = int(input())
+        transferencia += bytes
+        tamanho -= bytes
+        tempo += 1
+        if tamanho <= 0:
+            break
+        i+=1
+    if tamanho > 0:
+        taxa = transferencia/5
+        if taxa == 0:
+            print ('Tempo restante: pendente...')
+        else:
+            segundos = int(tamanho/taxa)
+            if segundos < tamanho/taxa:
+                segundos += 1
+            print(f'Tempo restante: {segundos} segundos.')
+print(f'Tempo total: {tempo} segundos.')

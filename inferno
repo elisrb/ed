@@ -1,0 +1,7 @@
+fila = input().split()
+eternidades = int(input())
+for i in range(eternidades):
+    fila.append(fila.pop(0))
+
+print(f'Pessoa da frente: {fila[0]}')
+print(f'Pessoa do fim: {fila[-1]}')

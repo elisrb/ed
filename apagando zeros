@@ -1,0 +1,13 @@
+total = int(input())
+i = 0
+while i < total:
+    zeros = 0
+    linha = input()
+    if '1' in linha:
+        indice = linha.index('1')+1
+        while indice < len(linha):
+            if '1' in linha[indice:] and linha[indice] == '0':
+                zeros+=1
+            indice+=1
+    print(zeros)
+    i+=1

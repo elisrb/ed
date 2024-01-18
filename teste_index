@@ -1,0 +1,2 @@
+frase = '(oioioi)'
+print(frase[0:7])

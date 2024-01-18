@@ -1,0 +1,15 @@
+total = int(input())
+roupas = []
+tempo_total = 0
+for i in range(total):
+    tipo, cor, tempo = input().split()
+    roupas.append([tipo, cor])
+    tempo_total += int(tempo)
+
+i = 1
+while i <= len(roupas):
+    termo = roupas[-i]
+    print(f'Tipo: {termo[0]}, Cor: {termo[1]}')
+    i+=1
+print(f'Total de roupas: {len(roupas)}')
+print(f'Total de tempo: {tempo_total}')

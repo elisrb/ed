@@ -1,0 +1,11 @@
+deque = []
+digitos = '1234567890'
+for caractere in input():
+    if caractere in digitos:
+        deque.append(caractere)
+    elif caractere == '*':
+        print(deque.pop(0), end = '')
+    elif caractere == '+':
+        print(deque.pop(), end = '')
+    else:
+        deque.insert(0, caractere)

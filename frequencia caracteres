@@ -1,0 +1,22 @@
+def frequencia(frase):
+    if len(frase) == 0:
+        return frase
+    caracteres = {}
+    for caracter in frase:
+        if caracter not in caracteres:
+            caracteres[caracter] = 1
+        else:
+            caracteres[caracter]+=1
+    maximo = max(caracteres.values())
+    lista_max = []
+    for letra in caracteres:
+        if caracteres[letra] == maximo:
+            lista_max.append(letra)
+    if len(lista_max) == 1:
+        result = lista_max[0]
+    else:
+        for caracter in frase:
+            if caracter in lista_max:
+                result = caracter
+                break
+    return result

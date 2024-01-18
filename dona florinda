@@ -1,0 +1,34 @@
+pretendentes = int(input())
+candidatos_altura = {}
+candidatos_peso = {}
+candidatos_nome = {}
+for i in range(pretendentes):
+    nome, sobrenome, altura, peso = input().split()
+    candidatos_altura[f"{sobrenome}, {nome}"] = abs(180 - int(altura))
+    candidatos_peso[f"{sobrenome}, {nome}"] = 75 - int(peso) #melhor: 0, positivos, negativos
+candidatos_altura = dict(sorted(candidatos_altura.items(), key=lambda item:item[1]))
+
+candidatos = []
+for candidato in candidatos_altura:
+    if len(candidatos) == 0:
+        candidatos.append(candidato)
+    else:
+        if candidatos_altura[candidato] == candidatos_altura[candidatos[-1]]:
+            i = 1
+            if candidatos_peso[candidato] >= 0:
+                while candidatos_peso[candidato] <= candidatos_peso[candidatos[-i]] and i < len(candidatos):
+                    i+=1
+            else:
+                while candidatos_peso[candidato] >= candidatos_peso[candidatos[-i]] and i < len(candidatos):
+                    i+=1
+            if candidatos_peso[candidato] == candidatos_peso[candidatos[-i]]:
+                if candidato < candidatos[-i]:
+                    candidatos.insert(-i, candidato)
+                else:
+                    candidatos.insert(-i+1, candidato)
+            else:
+                candidatos.insert(-i+1, candidato)
+        else:
+            candidatos.append(candidato)
+for nome in candidatos:
+    print(nome)

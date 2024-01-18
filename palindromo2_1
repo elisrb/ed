@@ -1,0 +1,27 @@
+def palindromo(palavra):
+    j = 0
+    while j < len(palavra)/2:
+        if palavra[j] != palavra[-1-j]:
+            return False
+        j+=1
+    return True
+
+palavras = input().split()
+for palavra in palavras:
+    if not palindromo(palavra):
+        palindromos = []
+        i = 0
+        for caractere in palavra:
+            podeir = True
+            if caractere in palavra[i+2:]:
+                i2 = palavra.find(caractere, i+2)
+                fatia = palavra[i:i2+1]
+                if palindromo(fatia):
+                    for termo in palindromos:
+                        if fatia in termo:
+                            podeir = False
+                if podeir:
+                    palindromos.append(fatia)
+            i+=1
+        if len(palindromos) >= 2:
+            print(palavra)

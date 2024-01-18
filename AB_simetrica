@@ -1,0 +1,48 @@
+import math
+class ArvoreBinaria():
+    def __init__(self, dado, esq = None, dir = None):
+        self.dado = dado
+        self.esq = esq
+        self.dir = dir
+
+def verificaSimetria(raiz):
+    nivel = [raiz]
+    i = 0
+    k = 2
+    pode = True
+    while pode:
+        if nivel[i]:
+            nivel.append(nivel[i].esq)
+            nivel.append(nivel[i].dir)
+        i+=1
+        if i == (2**k)-1:
+            pode = False
+            for elemento in nivel[-i-1:]:
+                if elemento:
+                    pode = True
+            k+=1
+    inicio = 0
+    fim = 1
+    while inicio < len(nivel)-1:
+        if analise(nivel[inicio:(2**fim)-1]) == False:
+            return False
+        else:
+            inicio = (2**fim)-1
+            fim += 1
+    return True
+
+
+
+def analise(nivel):
+    deu = True
+    j = 0
+    while j < math.ceil(len(nivel)):
+        if nivel[j] and not nivel[-j-1]:
+            deu = False
+        elif not nivel[j] and nivel[-j-1]:
+            deu = False
+        elif nivel[j] and nivel[-j-1]:
+            if nivel[j].dado != nivel[-j-1].dado:
+                deu = False
+        j+=1
+    return deu
